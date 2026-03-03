@@ -29,6 +29,7 @@ export function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    router.refresh();
     router.push("/");
   };
 
@@ -51,17 +52,17 @@ export function Navbar() {
 
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-4">
-            <Link href="/docs" className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
+            <Link href="/docs" prefetch={false} className="text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors">
               Docs
             </Link>
-            <Link href="/dashboard" className="text-sm font-medium text-zinc-700 hover:text-primary transition-colors">
+            <Link href="/dashboard" prefetch={false} className="text-sm font-medium text-zinc-700 hover:text-primary transition-colors">
               Workspace
             </Link>
           </div>
 
           {session ? (
             <div className="flex items-center gap-3 pl-4 border-l border-zinc-200">
-              <Link href="/profile">
+              <Link href="/profile" prefetch={false}>
                 <Button variant="ghost" size="sm" className="hidden sm:flex gap-2 rounded-full hover:bg-white/50">
                   <UserIcon className="w-4 h-4" />
                   Profile
@@ -79,10 +80,10 @@ export function Navbar() {
             </div>
           ) : (
             <div className="flex items-center gap-4 pl-4 border-l border-zinc-200">
-              <Link href="/login" className="text-sm font-medium text-zinc-700 hover:text-primary transition-colors">
+              <Link href="/login" prefetch={false} className="text-sm font-medium text-zinc-700 hover:text-primary transition-colors">
                 Log in
               </Link>
-              <Link href="/signup">
+              <Link href="/signup" prefetch={false}>
                 <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
                   Sign Up
                 </Button>
