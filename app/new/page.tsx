@@ -48,7 +48,7 @@ export default function NewNotePage() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: aiPrompt }),
+        body: JSON.stringify({ prompt: aiPrompt, type }),
       });
       if (!res.ok) throw new Error("Failed to generate content");
       const { content: generatedContent } = await res.json();
