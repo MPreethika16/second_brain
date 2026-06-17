@@ -43,16 +43,19 @@ export default function Dashboard() {
   const [isVoiceNote, setIsVoiceNote] = useState(false);
   const [isCommandDetected, setIsCommandDetected] = useState(false);
   const [voiceTranscript, setVoiceTranscript] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [recognition, setRecognition] = useState<any>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const SpeechRecognitionFn = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       if (SpeechRecognitionFn) {
         const rec = new SpeechRecognitionFn();
         rec.continuous = true;
         rec.interimResults = true;
         
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         rec.onresult = (event: any) => {
           let currentTranscript = "";
           for (let i = event.resultIndex; i < event.results.length; ++i) {
@@ -69,6 +72,7 @@ export default function Dashboard() {
           }
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         rec.onerror = (e: any) => {
           console.error("Speech recognition error:", e.error);
           setActiveRecording(null);
@@ -526,7 +530,7 @@ export default function Dashboard() {
 
             <select
               value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value as any)}
+              onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
               className="h-12 px-4 rounded-2xl bg-white/50 backdrop-blur-xl border border-white/40 shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none min-w-[140px] cursor-pointer hover:bg-white/60 transition"
             >
               <option value="newest">Newest First</option>

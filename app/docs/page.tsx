@@ -46,7 +46,7 @@ export default function DocsPage() {
           </div>
           <div className="space-y-1 bg-white p-5 rounded-2xl border border-zinc-100 shadow-sm">
             <h4 className="font-bold text-zinc-900 flex items-center gap-2"><SparkleIcon /> Progressive disclosure</h4>
-            <p className="text-sm leading-relaxed">Complex functionalities (like relational graph visualizations and vector AI search parameters) sit gracefully out of view until directly summoned by the user's intent.</p>
+            <p className="text-sm leading-relaxed">Complex functionalities (like relational graph visualizations and vector AI search parameters) sit gracefully out of view until directly summoned by the user&apos;s intent.</p>
           </div>
           <div className="space-y-1 bg-white p-5 rounded-2xl border border-zinc-100 shadow-sm">
             <h4 className="font-bold text-zinc-900 flex items-center gap-2"><SparkleIcon /> Emotional personalization</h4>
@@ -62,7 +62,7 @@ export default function DocsPage() {
       description: "Understanding AI as an active system that continuously self-improves, rather than a passive text generator.",
       content: (
         <div className="space-y-4 text-zinc-600 mt-4 leading-relaxed">
-          <p>Second Brain isn't an isolated vault; it operates active automation loops to optimize your graph over time without human intervention.</p>
+          <p>Second Brain isn&apos;t an isolated vault; it operates active automation loops to optimize your graph over time without human intervention.</p>
           <ul className="grid gap-3 mt-4 mb-4">
             <li className="flex items-start gap-3">
               <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">1</div>
@@ -101,10 +101,10 @@ export default function DocsPage() {
               ?q=explain+neural+networks&userId=uuid
             </p>
             <div className="bg-black/40 p-4 rounded-xl font-mono text-xs border border-white/5 space-y-2">
-              <div className="text-zinc-500">// Bypasses standard RLS explicitly surfacing RAG data globally.</div>
+              <div className="text-zinc-500">{/* Bypasses standard RLS explicitly surfacing RAG data globally. */}</div>
               <div className="text-white">{"{"}</div>
-              <div className="text-blue-300 ml-4">"answer": <span className="text-orange-300">"Neural networks are..."</span>,</div>
-              <div className="text-blue-300 ml-4">"sources": <span className="text-zinc-500">[...]</span></div>
+              <div className="text-blue-300 ml-4">&quot;answer&quot;: <span className="text-orange-300">&quot;Neural networks are...&quot;</span>,</div>
+              <div className="text-blue-300 ml-4">&quot;sources&quot;: <span className="text-zinc-500">[...]</span></div>
               <div className="text-white">{"}"}</div>
             </div>
           </div>

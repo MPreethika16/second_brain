@@ -166,7 +166,7 @@ Output strictly in JSON.`
            intent = "command";
            searchReq = parsed.query || prompt;
         }
-      } catch (e) {}
+      } catch {}
 
       // Get user's recent notes for Context and Style
       const { data: previousNotes } = await supabase
@@ -243,7 +243,7 @@ You must output ONLY valid JSON.`,
           finalContent = parsed.content || "";
           title = parsed.title || "";
           if (Array.isArray(parsed.tags)) tags = parsed.tags.map((t: string) => t.trim().toLowerCase().replace(/[^a-z0-9-]/g, "")).filter(Boolean).slice(0, 6);
-        } catch (e) {
+        } catch {
           finalContent = rawContent; 
         }
         return NextResponse.json({ intent: "note_creation", content: finalContent.trim(), title, tags });
@@ -255,9 +255,9 @@ You must output ONLY valid JSON.`,
            user_id: user.id
          });
          if (!error && searchData && searchData.length > 0) {
-            context = searchData.map((note: any) => `Title: ${note.title}\nContent: ${note.content}`).join("\n\n---\n\n");
+            context = searchData.map((note: { title: string; content: string }) => `Title: ${note.title}\nContent: ${note.content}`).join("\n\n---\n\n");
          } else if (recentNotes.length > 0) {
-            context = recentNotes.map((n: any) => `Title: ${n.title}\nDate: ${n.created_at}\nContent: ${n.content}`).join("\n\n---\n\n");
+            context = recentNotes.map((n: { title: string; created_at: string; content: string }) => `Title: ${n.title}\nDate: ${n.created_at}\nContent: ${n.content}`).join("\n\n---\n\n");
          } else {
             context = "No relevant notes found.";
          }
@@ -301,7 +301,7 @@ You must output ONLY valid JSON.`,
           finalContent = parsed.content || "";
           title = parsed.title || "";
           if (Array.isArray(parsed.tags)) tags = parsed.tags.map((t: string) => t.trim().toLowerCase().replace(/[^a-z0-9-]/g, "")).filter(Boolean).slice(0, 6);
-        } catch (e) {
+        } catch {
           finalContent = rawContent; 
         }
 

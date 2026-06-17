@@ -45,7 +45,9 @@ export async function POST(req: Request) {
       );
     }
 
-    let { title, content, type, tags, links, fileUrls } = await req.json();
+    const body = await req.json();
+    const { title, content, type, links, fileUrls } = body;
+    let tags = body.tags;
 
     if (!title || !content) {
       return NextResponse.json(
