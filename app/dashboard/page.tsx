@@ -338,7 +338,7 @@ export default function Dashboard() {
           </div>
 
           <div className="flex gap-3">
-            <Link href="/dashboard/graph">
+            <Link href="/dashboard/graph" prefetch={false}>
               <Button variant="outline" className="rounded-full px-6 py-2 shadow-sm hover:shadow-md transition bg-white/50 border-white/40">
                 Graph View
               </Button>
@@ -572,7 +572,7 @@ export default function Dashboard() {
             ))
           ) : (
             filtered.map((note) => (
-              <Link key={note.id} href={`/dashboard/${note.id}`} className="block h-full">
+              <Link key={note.id} href={`/dashboard/${note.id}`} prefetch={false} className="block h-full">
                 <motion.div 
                   whileHover={{ y: -5, scale: 1.02 }} 
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
